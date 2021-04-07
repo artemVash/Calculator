@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="typeOfCapitalization">Тип капитализации</string>
+    <string name="week">Неделя</string>
+    <string name="calculation">Рассчитать</string>
+    <string name="month">Месяц</string>
+    <string name="replenishmentInAMonth">Ежемесячное пополнение:</string>
+</resources>
