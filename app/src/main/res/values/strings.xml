@@ -5,4 +5,5 @@
     <string name="calculation">Рассчитать</string>
     <string name="month">Месяц</string>
     <string name="replenishmentInAMonth">Ежемесячное пополнение:</string>
+    <string name="result">Результат:</string>
 </resources>

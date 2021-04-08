@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,23 +15,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/interestRate"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:layout_margin="10dp"
+            android:hint="Введите % ставку">
 
-        <EditText
-            android:id="@+id/initialCapital"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/interestRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/finalCapital"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
+            android:layout_margin="10dp"
+            android:hint="Стартовая сумма">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/initialCapital"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Конечный капитал">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/finalCapital"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +74,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/typeOfCapitalization"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,19 +87,21 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/radioButtonWeek"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:layout_marginLeft="10dp"
                     android:text="@string/week" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/radioButtonMonth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:layout_marginRight="10dp"
                     android:text="@string/month" />
             </RadioGroup>
         </LinearLayout>
@@ -100,20 +125,33 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"
                 android:text="@string/replenishmentInAMonth" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/replenishmentCheckBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1" />
         </LinearLayout>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-        </EditText>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Сумма:">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sumMonth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -127,12 +165,19 @@
         <TextView
             android:id="@+id/textCalculation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:text="@string/result"
+            android:textSize="15sp"
+            android:background="@drawable/text_calculation"/>
+
         <Button
             android:id="@+id/buttonCalculation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/calculation"/>
+            android:layout_margin="10dp"
+            android:text="@string/calculation" />
     </LinearLayout>
 
 
