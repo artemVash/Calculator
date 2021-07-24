@@ -11,5 +11,12 @@
     <string name="final_capital">Конечный капитал</string>
     <string name="initial_capital">Стартовая сумма</string>
     <string name="interest_rate">Введите % ставку</string>
+    <string name="input_data">Ввод данных</string>
+    <string name="history_request">История запросов</string>
+
+    <string name="item_final_capital">Конечный капитал:</string>
+    <string name="item_initial_capital">Стартовая сумма:</string>
+    <string name="item_type_of_capitalization">Тип капитализации:</string>
+    <string name="item_rate">Ставка:</string>
 
 </resources>
