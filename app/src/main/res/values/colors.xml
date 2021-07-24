@@ -8,12 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#9E4749</color>
-    <color name="background_main">#FE7276</color>
+    <color name="background_main">#FAF6EC</color>
     <color name="black_60">#60000000</color>
     <color name="trans">#00000000 </color>
     <color name="red_china_start">#FA0404</color>
     <color name="red_china_end">#FA6C6C</color>
     <color name="gold">#D4AF37 </color>
+    <color name="gold_60">#4DFFEB3B</color>
 
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#D4AF37</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#FF000000</color>
 </resources>
