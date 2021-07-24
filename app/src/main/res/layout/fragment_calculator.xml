@@ -222,11 +222,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:padding="15dp"
-                android:text="@string/result"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:background="@drawable/text_calculation"/>
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="@color/gold"
+                tools:text="123.00 Месяца"/>
 
             <TextView
                 android:id="@+id/btnCalculation"

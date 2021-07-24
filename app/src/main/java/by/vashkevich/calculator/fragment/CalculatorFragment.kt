@@ -13,32 +13,47 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import by.vashkevich.calculator.MainViewModel
 import by.vashkevich.calculator.R
+import by.vashkevich.calculator.dataBase.entity.DataRequest
 import com.google.android.material.textfield.TextInputEditText
 
 class CalculatorFragment : Fragment() {
 
+    private lateinit var interestRate: TextInputEditText
+    private lateinit var initialCapital: TextInputEditText
+    private lateinit var finalCapital: TextInputEditText
+    private lateinit var sumMonth: TextInputEditText
+
+    private lateinit var radioButtonWeek: RadioButton
+    private lateinit var radioButtonMonth: RadioButton
+
     private val viewModel by lazy {
         ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-                .create(MainViewModel::class.java)
+            .create(MainViewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_calculator, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.getAll()
+
         //Поля ввода
-        val interestRate = view.findViewById<TextInputEditText>(R.id.interestRate) // процент
-        val initialCapital = view.findViewById<TextInputEditText>(R.id.initialCapital) // начальная сумма
-        val finalCapital = view.findViewById<TextInputEditText>(R.id.finalCapital)     // ожидаеммая сумма
-        val sumMonth = view.findViewById<TextInputEditText>(R.id.sumMonth)             // пополнение в месяц
+        interestRate = view.findViewById(R.id.interestRate) // процент
+        initialCapital = view.findViewById(R.id.initialCapital) // начальная сумма
+        finalCapital = view.findViewById(R.id.finalCapital)     // ожидаеммая сумма
+        sumMonth = view.findViewById(R.id.sumMonth)             // пополнение в месяц
 
 
         //Поля RadioButton
-        val radioButtonWeek = view.findViewById<RadioButton>(R.id.radioButtonWeek)
-        val radioButtonMonth = view.findViewById<RadioButton>(R.id.radioButtonMonth)
+        radioButtonWeek = view.findViewById<RadioButton>(R.id.radioButtonWeek)
+        radioButtonMonth = view.findViewById<RadioButton>(R.id.radioButtonMonth)
 
         // Поле CheckBox
         val replenishmentCheckBox = view.findViewById<CheckBox>(R.id.replenishmentCheckBox)
@@ -73,9 +88,14 @@ class CalculatorFragment : Fragment() {
             var daysCounter = 0
             var weeks = 0.0
 
+            var checkedRadioButton = false
+            var checkedCheckBox = false
+
+
             if (initialCapital.text.isNullOrEmpty() ||
-                    interestRate.text.isNullOrEmpty() ||
-                    finalCapital.text.isNullOrEmpty()) {
+                interestRate.text.isNullOrEmpty() ||
+                finalCapital.text.isNullOrEmpty()
+            ) {
                 Toast.makeText(context, "Заполните все поля", Toast.LENGTH_LONG).show()
             } else {
 
@@ -92,6 +112,7 @@ class CalculatorFragment : Fragment() {
                         if (daysCounter % 30 == 0 && radioButtonMonth.isChecked) {
                             numInitialCapital += numInitialCapital / 100 * numInterestRate // ежемесечная капитализация
                             weeks += 4.3; // 4.3 количество недель в месяце
+                            checkedRadioButton = true
                         } else if (daysCounter % 7 == 0 && radioButtonWeek.isChecked) {
                             numInitialCapital += numInitialCapital / 100 * numInterestRate // еженедельная капитализация
                             weeks++;
@@ -100,6 +121,7 @@ class CalculatorFragment : Fragment() {
                         if (replenishmentCheckBox.isChecked && daysCounter % 30 == 0) {
                             val numSumMonth = (sumMonth.text.toString()).toDouble()
                             numInitialCapital += numSumMonth;
+                            checkedCheckBox = true
                         }
 
                     }
@@ -108,10 +130,47 @@ class CalculatorFragment : Fragment() {
                 }
             }
             val month = weeks / 4.3
-
             val monthEnd: String = String.format("%.2f", month)
+
+            viewModel.insert(
+                addDataRequest(
+                    interestRate.text.toString(),
+                    initialCapital.text.toString(),
+                    finalCapital.text.toString(),
+                    checkedRadioButton,
+                    checkedCheckBox,
+                    monthEnd
+                )
+            )
             viewModel.setTextCalculation(monthEnd)
 
         }
+    }
+
+    private fun addDataRequest(
+        rate: String,
+        initial: String,
+        final: String,
+        month: Boolean,
+        monthSum: Boolean,
+        result: String
+    ): DataRequest {
+        val monthAndWeek: String
+        val monthReplenishment: String
+
+        if (monthSum) monthReplenishment = sumMonth.text.toString()
+        else monthReplenishment = "-"
+
+        if (month) monthAndWeek = "Месяц"
+        else monthAndWeek = "Неделя"
+
+        return DataRequest(
+            rate,
+            initial,
+            final,
+            monthAndWeek,
+            monthReplenishment,
+            result
+        )
     }
 }
