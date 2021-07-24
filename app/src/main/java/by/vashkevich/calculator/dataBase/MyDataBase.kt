@@ -12,13 +12,17 @@ abstract class MyDataBase : RoomDatabase() {
 
     abstract fun dataRequestDao():DataRequestDao
 
-    var INSTANCE:MyDataBase? = null
+    companion object{
+        var INSTANCE:MyDataBase? = null
 
-    fun getDataBase(context: Context):MyDataBase{
+        fun getDataBase(context: Context):MyDataBase{
 
-        return if(INSTANCE == null){
-            INSTANCE = Room.databaseBuilder(context,MyDataBase::class.java,"database_data_request").build()
-            INSTANCE as MyDataBase
-        }else INSTANCE as MyDataBase
+            return if(INSTANCE == null){
+                INSTANCE = Room.databaseBuilder(context,MyDataBase::class.java,"database_data_request").build()
+                INSTANCE as MyDataBase
+            }else INSTANCE as MyDataBase
+        }
     }
+
+
 }

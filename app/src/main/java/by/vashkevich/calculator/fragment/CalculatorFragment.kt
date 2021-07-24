@@ -18,7 +18,8 @@ import com.google.android.material.textfield.TextInputEditText
 class CalculatorFragment : Fragment() {
 
     private val viewModel by lazy {
-        ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
+                .create(MainViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
