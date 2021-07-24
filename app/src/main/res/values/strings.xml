@@ -6,4 +6,10 @@
     <string name="month">Месяц</string>
     <string name="replenishmentInAMonth">Ежемесячное пополнение:</string>
     <string name="result">Результат:</string>
+    <string name="calculate">РАССЧИТАТЬ</string>
+    <string name="sum">Сумма:</string>
+    <string name="final_capital">Конечный капитал</string>
+    <string name="initial_capital">Стартовая сумма</string>
+    <string name="interest_rate">Введите % ставку</string>
+
 </resources>

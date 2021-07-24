@@ -4,18 +4,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.*
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
+
+    val viewModel by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //Поля ввода
-        val interestRate = findViewById<TextInputEditText>(R.id.interestRate)     // процент
+        val interestRate = findViewById<TextInputEditText>(R.id.interestRate) // процент
         val initialCapital = findViewById<TextInputEditText>(R.id.initialCapital) // начальная сумма
         val finalCapital = findViewById<TextInputEditText>(R.id.finalCapital)     // ожидаеммая сумма
-        var sumMonth = findViewById<TextInputEditText>(R.id.sumMonth)             // пополнение в месяц
+        val sumMonth = findViewById<TextInputEditText>(R.id.sumMonth)             // пополнение в месяц
 
 
         //Поля RadioButton
@@ -27,23 +33,25 @@ class MainActivity : AppCompatActivity() {
 
 
         //Поле вывода
-        var textCalculation = findViewById<TextView>(R.id.textCalculation)
+        val textCalculation = findViewById<TextView>(R.id.textCalculation)
 
         //Кнопка
-        val buttonCalculation = findViewById<Button>(R.id.buttonCalculation)
+        val btnCalculation = findViewById<TextView>(R.id.btnCalculation)
 
 
         replenishmentCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
-            if(isChecked){
+            if (isChecked) {
                 sumMonth.isEnabled = true
-            }else{
+            } else {
                 sumMonth.isEnabled = false
                 sumMonth.text?.clear()
             }
         }
+        viewModel.textCalculation.observe(this){
+            textCalculation.text = "$it Месяцев "
+        }
 
-
-        buttonCalculation.setOnClickListener {
+        btnCalculation.setOnClickListener {
 
             var daysCounter = 0
             var weeks = 0.0
@@ -52,9 +60,9 @@ class MainActivity : AppCompatActivity() {
                     interestRate.text.isNullOrEmpty() ||
                     finalCapital.text.isNullOrEmpty()) {
                 Toast.makeText(this, "Заполните все поля", Toast.LENGTH_LONG).show()
-            }else{
+            } else {
 
-                if(radioButtonMonth.isChecked || radioButtonWeek.isChecked) {
+                if (radioButtonMonth.isChecked || radioButtonWeek.isChecked) {
 
                     val numInterestRate = interestRate.text.toString().toDouble()
                     var numInitialCapital = initialCapital.text.toString().toDouble()
@@ -78,14 +86,15 @@ class MainActivity : AppCompatActivity() {
                         }
 
                     }
-                }else{
+                } else {
                     Toast.makeText(this, "Выберите тип капитализации", Toast.LENGTH_LONG).show()
                 }
             }
             val month = weeks / 4.3
 
             val monthEnd: String = String.format("%.2f", month)
-            textCalculation.text = "$monthEnd Месяцев "
+            viewModel.setTextCalculation(monthEnd)
+
 
         }
 
