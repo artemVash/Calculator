@@ -1,11 +1,8 @@
 package by.vashkevich.calculator.dataBase.dao
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import by.vashkevich.calculator.dataBase.entity.DataRequest
-
+@Dao
 interface DataRequestDao {
 
     @Insert

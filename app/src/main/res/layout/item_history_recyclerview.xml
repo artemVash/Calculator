@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250dp">
+    android:layout_height="250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin = "8dp"
+    android:elevation="10dp"
+    android:background="@drawable/bg_item_history">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="5dp"
-        android:elevation="10dp"
-        android:background="@drawable/bg_item_history">
+        android:elevation="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:paddingStart="5dp"
                 android:textColor="@color/black"
                 android:text="@string/item_rate"
@@ -50,7 +52,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:paddingStart="5dp"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:textColor="@color/black"
                 android:text="@string/item_initial_capital"
                 tools:ignore="NestedWeights" />
@@ -76,7 +78,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:paddingStart="5dp"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:textColor="@color/black"
                 android:text="@string/item_final_capital"
                 tools:ignore="NestedWeights" />
@@ -102,7 +104,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:paddingStart="5dp"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:textColor="@color/black"
                 android:text="@string/item_type_of_capitalization"
                 tools:ignore="NestedWeights" />
@@ -128,7 +130,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:paddingStart="5dp"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:textColor="@color/black"
                 android:text="@string/replenishmentInAMonth"
                 tools:ignore="NestedWeights" />
@@ -154,7 +156,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:paddingStart="5dp"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:textColor="@color/black"
                 android:text="@string/result"
                 tools:ignore="NestedWeights" />
@@ -172,4 +174,4 @@
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>
