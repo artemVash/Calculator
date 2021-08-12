@@ -23,23 +23,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <ImageView
             android:id="@+id/btn_back_calculator_fragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/back_image"
+            android:background="@drawable/button_back_and_clear_background"
             android:layout_marginTop="17dp"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <ImageView
             android:id="@+id/btn_clear_all_db"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/clear"
+            android:src="@drawable/clear_image"
+            android:background="@drawable/button_back_and_clear_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin = "8dp"
-    android:elevation="10dp"
-    android:background="@drawable/bg_item_history">
+    app:cardBackgroundColor="@color/gold_20"
+    android:layout_margin="8dp"
+    android:elevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="5dp"
-        android:elevation="10dp">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,8 +25,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:textSize="23sp"
+                android:layout_weight="0.5"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
                 android:paddingStart="5dp"
                 android:textColor="@color/black"
                 android:text="@string/item_rate"
@@ -36,8 +38,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/black"/>
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textAlignment="textEnd"
+                android:gravity="fill_vertical"
+                tools:ignore="RtlCompat"/>
 
         </LinearLayout>
 
@@ -50,9 +55,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3"
+                android:layout_weight="0.5"
                 android:paddingStart="5dp"
-                android:textSize="23sp"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:text="@string/item_initial_capital"
                 tools:ignore="NestedWeights" />
@@ -62,8 +68,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/black"/>
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textAlignment="textEnd"
+                android:gravity="fill_vertical"
+                tools:ignore="RtlCompat"/>
 
         </LinearLayout>
 
@@ -76,9 +85,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3"
+                android:layout_weight="0.5"
                 android:paddingStart="5dp"
-                android:textSize="23sp"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:text="@string/item_final_capital"
                 tools:ignore="NestedWeights" />
@@ -88,8 +98,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/black"/>
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textAlignment="textEnd"
+                android:gravity="fill_vertical"
+                tools:ignore="RtlCompat"/>
 
         </LinearLayout>
 
@@ -104,7 +117,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:paddingStart="5dp"
-                android:textSize="23sp"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:text="@string/item_type_of_capitalization"
                 tools:ignore="NestedWeights" />
@@ -114,8 +128,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/black"/>
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textAlignment="textEnd"
+                android:gravity="fill_vertical"
+                tools:ignore="RtlCompat"/>
 
         </LinearLayout>
 
@@ -128,9 +145,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3"
+                android:layout_weight="0.2"
                 android:paddingStart="5dp"
-                android:textSize="23sp"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:text="@string/replenishmentInAMonth"
                 tools:ignore="NestedWeights" />
@@ -140,8 +158,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/black"/>
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textAlignment="textEnd"
+                android:gravity="fill_vertical"
+                tools:ignore="RtlCompat"/>
 
         </LinearLayout>
 
@@ -154,9 +175,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3"
+                android:layout_weight="1.3"
                 android:paddingStart="5dp"
-                android:textSize="23sp"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:text="@string/result"
                 tools:ignore="NestedWeights" />
@@ -166,12 +188,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/black"/>
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textAlignment="textEnd"
+                android:gravity="fill_vertical"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

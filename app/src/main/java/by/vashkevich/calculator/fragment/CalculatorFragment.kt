@@ -1,6 +1,7 @@
 package by.vashkevich.calculator.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import by.vashkevich.calculator.MainViewModel
 import by.vashkevich.calculator.R
 import by.vashkevich.calculator.dataBase.entity.DataRequest
 import com.google.android.material.textfield.TextInputEditText
+import java.text.DecimalFormat
 
 class CalculatorFragment : Fragment() {
 
@@ -26,10 +28,15 @@ class CalculatorFragment : Fragment() {
     private lateinit var radioButtonWeek: RadioButton
     private lateinit var radioButtonMonth: RadioButton
 
+    private lateinit var monthEnd: String
+
     private val viewModel by lazy {
         ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
             .create(MainViewModel::class.java)
     }
+
+    private val decimalFormat = DecimalFormat("#.#")
+    private val decimalFormatWeek = DecimalFormat("#")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,8 +59,8 @@ class CalculatorFragment : Fragment() {
 
 
         //Поля RadioButton
-        radioButtonWeek = view.findViewById<RadioButton>(R.id.radioButtonWeek)
-        radioButtonMonth = view.findViewById<RadioButton>(R.id.radioButtonMonth)
+        radioButtonWeek = view.findViewById(R.id.radioButtonWeek)
+        radioButtonMonth = view.findViewById(R.id.radioButtonMonth)
 
         // Поле CheckBox
         val replenishmentCheckBox = view.findViewById<CheckBox>(R.id.replenishmentCheckBox)
@@ -76,7 +83,7 @@ class CalculatorFragment : Fragment() {
             }
         }
         viewModel.textCalculation.observe(requireActivity()) {
-            textCalculation.text = "$it Месяцев "
+            textCalculation.text = it
         }
 
         btnHistory.setOnClickListener {
@@ -107,6 +114,7 @@ class CalculatorFragment : Fragment() {
 
                     while (numInitialCapital < numFinalCapital) {
 
+
                         daysCounter++
 
                         if (daysCounter % 30 == 0 && radioButtonMonth.isChecked) {
@@ -123,27 +131,29 @@ class CalculatorFragment : Fragment() {
                             numInitialCapital += numSumMonth;
                             checkedCheckBox = true
                         }
-
                     }
                 } else {
                     Toast.makeText(context, "Выберите тип капитализации", Toast.LENGTH_LONG).show()
                 }
-            }
-            val month = weeks / 4.3
-            val monthEnd: String = String.format("%.2f", month)
 
-            viewModel.insert(
-                addDataRequest(
-                    interestRate.text.toString(),
-                    initialCapital.text.toString(),
-                    finalCapital.text.toString(),
-                    checkedRadioButton,
-                    checkedCheckBox,
-                    monthEnd
+                if (radioButtonMonth.isChecked) {
+                    monthEnd = finalDateMonth(weeks)
+                } else if (radioButtonWeek.isChecked) {
+                    monthEnd = finalDateWeek(weeks)
+                }
+
+                viewModel.insert(
+                    addDataRequest(
+                        interestRate.text.toString(),
+                        initialCapital.text.toString(),
+                        finalCapital.text.toString(),
+                        checkedRadioButton,
+                        checkedCheckBox,
+                        monthEnd
+                    )
                 )
-            )
-            viewModel.setTextCalculation(monthEnd)
-
+                viewModel.setTextCalculation(monthEnd)
+            }
         }
     }
 
@@ -172,5 +182,96 @@ class CalculatorFragment : Fragment() {
             monthReplenishment,
             result
         )
+    }
+
+    private fun finalDateMonth(weeks: Double): String {
+
+        var month = weeks / 4.3
+        var counterYear = 0
+
+        if (month < 12) {
+            return textMonth(decimalFormat.format(month))
+        } else {
+            while (month > 12) {
+                month -= 12
+                counterYear++
+            }
+            Log.e("month",decimalFormat.format(month))
+            return "${textYear(counterYear)} ${textMonth(decimalFormat.format(month))}"
+        }
+    }
+
+    private fun finalDateWeek(weeks: Double): String {
+
+        var remainderWeeks = weeks
+        var counterMonth = 0
+
+        return if (remainderWeeks < 4.3) {
+            textWeek(decimalFormat.format(remainderWeeks))
+        } else {
+            while (remainderWeeks > 4.3) {
+                remainderWeeks -= 4.3
+                counterMonth++
+            }
+
+//            Log.e("counterMonth", decimalFormat.format(remainderWeeks))
+
+            if (counterMonth == 0) {
+                textWeek(decimalFormat.format(remainderWeeks))
+            } else {
+                Log.e("counterMonth", counterMonth.toString())
+                "${finalDateMonth(counterMonth*4.3)} ${
+                    textWeek(
+                        decimalFormatWeek.format(
+                            remainderWeeks
+                        )
+                    )
+                }"
+            }
+        }
+    }
+
+    private fun textYear(x: Int): String {
+
+        val a = x % 10
+        val b = x % 100
+
+        return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
+            "$x года"
+        } else if (a == 1 && b != 11) {
+            "$x год"
+        } else {
+            "$x лет"
+        }
+    }
+
+    private fun textMonth(x: String): String {
+        val toInt = x.toInt()
+
+        val a = toInt % 10
+        val b = toInt % 100
+
+        return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
+            "$x месяца"
+        } else if (a == 1 && b != 11) {
+            "$x месяц"
+        } else {
+            "$x месяцев"
+        }
+    }
+
+    private fun textWeek(x: String): String {
+        val toInt = x.toInt()
+
+        val a = toInt % 10
+        val b = toInt % 100
+
+        return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
+            "$x недели"
+        } else if (a == 1 && b != 11) {
+            "$x неделя"
+        } else {
+            "$x недель"
+        }
     }
 }
