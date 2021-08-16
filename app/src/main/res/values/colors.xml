@@ -15,6 +15,9 @@
     <color name="red_china_end">#FA6C6C</color>
     <color name="gold">#D4AF37 </color>
     <color name="gold_20">#33FFEB3B</color>
+    <color name="red_color_logo">#CC0A00</color>
+    <color name="text_color_fragment_description">#975504</color>
+    <color name="status_bar_color">#FBE47E</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#FF000000</color>
 </resources>

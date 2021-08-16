@@ -21,6 +21,10 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     private var _textCalculation  = MutableLiveData<String>()
     val textCalculation:LiveData<String> = _textCalculation
 
+    fun clearTextCalculation(){
+        _textCalculation.value = ""
+    }
+
     private var _allDataRequest = MutableLiveData<List<DataRequest>>()
     val allDataRequest:LiveData<List<DataRequest>> = _allDataRequest
 

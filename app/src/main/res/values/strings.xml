@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Calculator</string>
     <string name="typeOfCapitalization">Тип капитализации</string>
+    <string name="month">Месяц</string>
     <string name="week">Неделя</string>
     <string name="calculation">Рассчитать</string>
-    <string name="month">Месяц</string>
     <string name="replenishmentInAMonth">Ежемесячное пополнение:</string>
     <string name="result">Результат:</string>
     <string name="calculate">РАССЧИТАТЬ</string>
@@ -21,5 +21,28 @@
 
     <string name="clear_all_data_in_recycler">Очистить историю запросов?</string>
     <string name="delete_data_in_recycler">Удалить данный запрос?</string>
+    <string name="main_text_description">DepositCalc станет вашим лучшим другом, если вы хотите узнать за какое время вырастет ваш капитал.</string>
+    <string name="second_text_description">Нужно всего лишь указать:</string>
+    <string name="second_text_description_item1">1. Стартовую сумму.</string>
+    <string name="second_text_description_item2">2. Процентную ставку. (Вашего инвестиционного инструмента)</string>
+    <string name="second_text_description_item3">3. Тип капитализации.</string>
+    <string name="second_text_description_additionally">*Дополнительно можно включить опцию ежемесячного пополнения и указать его сумму. После чего, нажав на кнопку \"рассчитать\" , вы узнаете за какое время достигнете желаемой суммы</string>
+    <string name="further">Далее</string>
+
+    <string name="year">год</string>
+    <string name="years">года</string>
+    <string name="years2">лет</string>
+
+    <string name="month_result">месяц</string>
+    <string name="months_result">месяца</string>
+    <string name="months2_result">месяцев</string>
+
+    <string name="week_result">неделя</string>
+    <string name="weeks_result">недели</string>
+    <string name="weeks2_result">недель</string>
+
+    <string name="back">назад</string>
+    <string name="clear">очистить</string>
+    <string name="delete">удалить</string>
 
 </resources>

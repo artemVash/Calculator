@@ -88,6 +88,8 @@ class CalculatorFragment : Fragment() {
 
         btnHistory.setOnClickListener {
             findNavController().navigate(R.id.showHistoryFragment)
+            clearAllField()
+            viewModel.clearTextCalculation()
         }
 
         btnCalculation.setOnClickListener {
@@ -171,8 +173,8 @@ class CalculatorFragment : Fragment() {
         if (monthSum) monthReplenishment = sumMonth.text.toString()
         else monthReplenishment = "-"
 
-        if (month) monthAndWeek = "Месяц"
-        else monthAndWeek = "Неделя"
+        if (month) monthAndWeek = getString(R.string.month)
+        else monthAndWeek = getString(R.string.week)
 
         return DataRequest(
             rate,
@@ -214,8 +216,6 @@ class CalculatorFragment : Fragment() {
                 counterMonth++
             }
 
-//            Log.e("counterMonth", decimalFormat.format(remainderWeeks))
-
             if (counterMonth == 0) {
                 textWeek(decimalFormat.format(remainderWeeks))
             } else {
@@ -237,11 +237,11 @@ class CalculatorFragment : Fragment() {
         val b = x % 100
 
         return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
-            "$x года"
+            "$x ${getString(R.string.years)}"
         } else if (a == 1 && b != 11) {
-            "$x год"
+            "$x ${getString(R.string.year)}"
         } else {
-            "$x лет"
+            "$x ${getString(R.string.years2)}"
         }
     }
 
@@ -252,11 +252,11 @@ class CalculatorFragment : Fragment() {
         val b = toInt % 100
 
         return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
-            "$x месяца"
+            "$x ${getString(R.string.months_result)}"
         } else if (a == 1 && b != 11) {
-            "$x месяц"
+            "$x ${getString(R.string.month_result)}"
         } else {
-            "$x месяцев"
+            "$x ${getString(R.string.months2_result)}"
         }
     }
 
@@ -267,11 +267,18 @@ class CalculatorFragment : Fragment() {
         val b = toInt % 100
 
         return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
-            "$x недели"
+            "$x ${getString(R.string.weeks_result)}"
         } else if (a == 1 && b != 11) {
-            "$x неделя"
+            "$x ${getString(R.string.week_result)}"
         } else {
-            "$x недель"
+            "$x ${getString(R.string.weeks2_result)}"
         }
+    }
+
+    private fun clearAllField(){
+        interestRate.text?.clear()
+        initialCapital.text?.clear()
+        finalCapital.text?.clear()
+        sumMonth.text?.clear()
     }
 }

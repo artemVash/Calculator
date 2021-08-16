@@ -37,10 +37,10 @@ class AdapterDataRequest(
                     R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background
                 )
                     .setTitle(R.string.delete_data_in_recycler)
-                    .setNegativeButton("назад") { dialog, which ->
+                    .setNegativeButton(R.string.back) { dialog, which ->
                         dialog.dismiss()
                     }
-                    .setPositiveButton("удалить") { dialog, which ->
+                    .setPositiveButton(R.string.delete) { dialog, which ->
                         viewModel.delete(data)
                         viewModel.getAll()
                     }
