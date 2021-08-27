@@ -42,6 +42,8 @@
         android:label="IntroFragment"
         tools:layout="@layout/fragment_intro">
         <action
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"
             android:id="@+id/showDescriptionFragment"
             app:destination="@id/descriptionFragment" />
     </fragment>

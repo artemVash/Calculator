@@ -5,10 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.RadioButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -27,6 +24,9 @@ class CalculatorFragment : Fragment() {
 
     private lateinit var radioButtonWeek: RadioButton
     private lateinit var radioButtonMonth: RadioButton
+    private lateinit var radioGroup:RadioGroup
+
+    private lateinit var replenishmentCheckBox:CheckBox
 
     private lateinit var monthEnd: String
 
@@ -55,15 +55,17 @@ class CalculatorFragment : Fragment() {
         interestRate = view.findViewById(R.id.interestRate) // процент
         initialCapital = view.findViewById(R.id.initialCapital) // начальная сумма
         finalCapital = view.findViewById(R.id.finalCapital)     // ожидаеммая сумма
-        sumMonth = view.findViewById(R.id.sumMonth)             // пополнение в месяц
+        sumMonth = view.findViewById(R.id.sumMonth) // пополнение в месяц
 
+        //RadioGroup
+        radioGroup = view.findViewById(R.id.radio_group)
 
         //Поля RadioButton
         radioButtonWeek = view.findViewById(R.id.radioButtonWeek)
         radioButtonMonth = view.findViewById(R.id.radioButtonMonth)
 
         // Поле CheckBox
-        val replenishmentCheckBox = view.findViewById<CheckBox>(R.id.replenishmentCheckBox)
+        replenishmentCheckBox = view.findViewById(R.id.replenishmentCheckBox)
 
 
         //Поле вывода
@@ -105,7 +107,7 @@ class CalculatorFragment : Fragment() {
                 interestRate.text.isNullOrEmpty() ||
                 finalCapital.text.isNullOrEmpty()
             ) {
-                Toast.makeText(context, "Заполните все поля", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.toast_fill_all_fields), Toast.LENGTH_LONG).show()
             } else {
 
                 if (radioButtonMonth.isChecked || radioButtonWeek.isChecked) {
@@ -135,7 +137,7 @@ class CalculatorFragment : Fragment() {
                         }
                     }
                 } else {
-                    Toast.makeText(context, "Выберите тип капитализации", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, getString(R.string.toast_choose_type), Toast.LENGTH_LONG).show()
                 }
 
                 if (radioButtonMonth.isChecked) {
@@ -280,5 +282,8 @@ class CalculatorFragment : Fragment() {
         initialCapital.text?.clear()
         finalCapital.text?.clear()
         sumMonth.text?.clear()
+        radioGroup.clearCheck()
+        replenishmentCheckBox.isChecked = false
+
     }
 }
