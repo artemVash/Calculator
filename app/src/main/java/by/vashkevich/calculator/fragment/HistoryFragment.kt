@@ -48,7 +48,7 @@ class HistoryFragment : Fragment() {
 
 
         back.setOnClickListener {
-            findNavController().navigate(R.id.backCalculatorFragment2)
+            findNavController().popBackStack()
         }
 
         clear.setOnClickListener {
@@ -58,10 +58,10 @@ class HistoryFragment : Fragment() {
                 R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background
             )
                 .setTitle(R.string.clear_all_data_in_recycler)
-                .setNegativeButton("назад") { dialog, which ->
+                .setNegativeButton(getString(R.string.back)) { dialog, which ->
                     dialog.dismiss()
                 }
-                .setPositiveButton("очистить") { dialog, which ->
+                .setPositiveButton(getString(R.string.clear)) { dialog, which ->
                     viewModel.clearAll()
                     viewModel.getAll()
                 }

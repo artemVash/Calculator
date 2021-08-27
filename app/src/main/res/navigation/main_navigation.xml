@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/calculatorFragment2"
+    app:startDestination="@id/introFragment"
     xmlns:tools="http://schemas.android.com/tools">
     <fragment
         android:id="@+id/calculatorFragment2"
@@ -12,15 +12,39 @@
         >
         <action
             android:id="@+id/showHistoryFragment"
-            app:destination="@id/historyFragment" />
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/from_up"
+            app:exitAnim="@anim/dissap"
+            app:popEnterAnim="@anim/appe"
+            app:popExitAnim="@anim/to_up" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="by.vashkevich.calculator.fragment.HistoryFragment"
         android:label="HistoryFragment"
-        tools:layout="@layout/fragment_history">
+        tools:layout="@layout/fragment_history"/>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="by.vashkevich.calculator.fragment.DescriptionFragment"
+        android:label="DescriptionFragment"
+        tools:layout="@layout/fragment_description">
         <action
-            android:id="@+id/backCalculatorFragment2"
-            app:destination="@id/calculatorFragment2" />
+            android:id="@+id/showCalculatorFragment2"
+            app:destination="@id/calculatorFragment2"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="by.vashkevich.calculator.fragment.IntroFragment"
+        android:label="IntroFragment"
+        tools:layout="@layout/fragment_intro">
+        <action
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"
+            android:id="@+id/showDescriptionFragment"
+            app:destination="@id/descriptionFragment" />
     </fragment>
 </navigation>

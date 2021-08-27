@@ -5,10 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.RadioButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -27,6 +24,9 @@ class CalculatorFragment : Fragment() {
 
     private lateinit var radioButtonWeek: RadioButton
     private lateinit var radioButtonMonth: RadioButton
+    private lateinit var radioGroup:RadioGroup
+
+    private lateinit var replenishmentCheckBox:CheckBox
 
     private lateinit var monthEnd: String
 
@@ -55,15 +55,17 @@ class CalculatorFragment : Fragment() {
         interestRate = view.findViewById(R.id.interestRate) // процент
         initialCapital = view.findViewById(R.id.initialCapital) // начальная сумма
         finalCapital = view.findViewById(R.id.finalCapital)     // ожидаеммая сумма
-        sumMonth = view.findViewById(R.id.sumMonth)             // пополнение в месяц
+        sumMonth = view.findViewById(R.id.sumMonth) // пополнение в месяц
 
+        //RadioGroup
+        radioGroup = view.findViewById(R.id.radio_group)
 
         //Поля RadioButton
         radioButtonWeek = view.findViewById(R.id.radioButtonWeek)
         radioButtonMonth = view.findViewById(R.id.radioButtonMonth)
 
         // Поле CheckBox
-        val replenishmentCheckBox = view.findViewById<CheckBox>(R.id.replenishmentCheckBox)
+        replenishmentCheckBox = view.findViewById(R.id.replenishmentCheckBox)
 
 
         //Поле вывода
@@ -88,6 +90,8 @@ class CalculatorFragment : Fragment() {
 
         btnHistory.setOnClickListener {
             findNavController().navigate(R.id.showHistoryFragment)
+            clearAllField()
+            viewModel.clearTextCalculation()
         }
 
         btnCalculation.setOnClickListener {
@@ -103,7 +107,7 @@ class CalculatorFragment : Fragment() {
                 interestRate.text.isNullOrEmpty() ||
                 finalCapital.text.isNullOrEmpty()
             ) {
-                Toast.makeText(context, "Заполните все поля", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.toast_fill_all_fields), Toast.LENGTH_LONG).show()
             } else {
 
                 if (radioButtonMonth.isChecked || radioButtonWeek.isChecked) {
@@ -133,7 +137,7 @@ class CalculatorFragment : Fragment() {
                         }
                     }
                 } else {
-                    Toast.makeText(context, "Выберите тип капитализации", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, getString(R.string.toast_choose_type), Toast.LENGTH_LONG).show()
                 }
 
                 if (radioButtonMonth.isChecked) {
@@ -171,8 +175,8 @@ class CalculatorFragment : Fragment() {
         if (monthSum) monthReplenishment = sumMonth.text.toString()
         else monthReplenishment = "-"
 
-        if (month) monthAndWeek = "Месяц"
-        else monthAndWeek = "Неделя"
+        if (month) monthAndWeek = getString(R.string.month)
+        else monthAndWeek = getString(R.string.week)
 
         return DataRequest(
             rate,
@@ -214,8 +218,6 @@ class CalculatorFragment : Fragment() {
                 counterMonth++
             }
 
-//            Log.e("counterMonth", decimalFormat.format(remainderWeeks))
-
             if (counterMonth == 0) {
                 textWeek(decimalFormat.format(remainderWeeks))
             } else {
@@ -237,11 +239,11 @@ class CalculatorFragment : Fragment() {
         val b = x % 100
 
         return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
-            "$x года"
+            "$x ${getString(R.string.years)}"
         } else if (a == 1 && b != 11) {
-            "$x год"
+            "$x ${getString(R.string.year)}"
         } else {
-            "$x лет"
+            "$x ${getString(R.string.years2)}"
         }
     }
 
@@ -252,11 +254,11 @@ class CalculatorFragment : Fragment() {
         val b = toInt % 100
 
         return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
-            "$x месяца"
+            "$x ${getString(R.string.months_result)}"
         } else if (a == 1 && b != 11) {
-            "$x месяц"
+            "$x ${getString(R.string.month_result)}"
         } else {
-            "$x месяцев"
+            "$x ${getString(R.string.months2_result)}"
         }
     }
 
@@ -267,11 +269,21 @@ class CalculatorFragment : Fragment() {
         val b = toInt % 100
 
         return if (a == 2 && b != 12 || a == 3 && b != 13 || a == 4 && b != 14) {
-            "$x недели"
+            "$x ${getString(R.string.weeks_result)}"
         } else if (a == 1 && b != 11) {
-            "$x неделя"
+            "$x ${getString(R.string.week_result)}"
         } else {
-            "$x недель"
+            "$x ${getString(R.string.weeks2_result)}"
         }
+    }
+
+    private fun clearAllField(){
+        interestRate.text?.clear()
+        initialCapital.text?.clear()
+        finalCapital.text?.clear()
+        sumMonth.text?.clear()
+        radioGroup.clearCheck()
+        replenishmentCheckBox.isChecked = false
+
     }
 }

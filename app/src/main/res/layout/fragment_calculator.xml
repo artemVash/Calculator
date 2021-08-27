@@ -47,6 +47,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayout"
+                android:theme="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -59,11 +60,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayout"
+                android:theme="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -81,6 +83,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayout"
+                android:theme="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -122,6 +125,7 @@
                 android:orientation="horizontal">
 
                 <RadioGroup
+                    android:id="@+id/radio_group"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
@@ -191,6 +195,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayout"
+                android:theme="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint ="@color/black"
@@ -223,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:textSize="30sp"
+                android:textSize="26sp"
                 android:textColor="@color/gold"
                 tools:text="123.00 Месяца"/>
 
