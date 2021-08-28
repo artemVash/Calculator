@@ -9,8 +9,8 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="290dp"
         android:layout_marginStart="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="18sp"
             android:text="@string/input_data"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,8 +48,8 @@
                 style="@style/TextInputLayout"
                 android:theme="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="30dp"
+                android:layout_margin="6dp"
                 android:elevation="30dp"
                 android:hint="@string/interest_rate"
                 android:textColorHint="@color/black">
@@ -66,8 +66,8 @@
                 style="@style/TextInputLayout"
                 android:theme="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="30dp"
+                android:layout_margin="6dp"
                 android:elevation="30dp"
                 android:hint="@string/initial_capital"
                 android:textColorHint="@color/black">
@@ -84,8 +84,8 @@
                 style="@style/TextInputLayout"
                 android:theme="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="30dp"
+                android:layout_margin="6dp"
                 android:elevation="30dp"
                 android:hint="@string/final_capital"
                 android:textColorHint="@color/black">
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/typeOfCapitalization"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="17sp"
                 android:layout_marginStart="16dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -132,7 +132,7 @@
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/radioButtonWeek"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="20dp"
 
                         android:buttonTint="@color/gold"
                         android:layout_marginStart="16dp"
@@ -142,7 +142,7 @@
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/radioButtonMonth"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="20dp"
                         android:buttonTint="@color/gold"
                         android:layout_marginStart="50dp"
                         android:text="@string/month"
@@ -172,7 +172,7 @@
                     android:layout_height="0dp"
                     android:text="@string/replenishmentInAMonth"
                     android:textColor="@color/black"
-                    android:textSize="23sp"
+                    android:textSize="16sp"
                     android:layout_marginStart="16dp"
                     android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -196,10 +196,10 @@
                 style="@style/TextInputLayout"
                 android:theme="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:textColorHint ="@color/black"
                 android:elevation="30dp"
-                android:layout_margin="10dp"
+                android:layout_margin="6dp"
                 android:hint="@string/sum">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -225,21 +225,21 @@
                 android:id="@+id/textCalculation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="6dp"
                 android:gravity="center"
-                android:textSize="26sp"
+                android:textSize="16sp"
                 android:textColor="@color/gold"
                 tools:text="123.00 Месяца"/>
 
             <TextView
                 android:id="@+id/btnCalculation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:padding="8dp"
+                android:layout_width="100dp"
+                android:layout_height="26dp"
+                android:layout_margin="6dp"
                 android:text="@string/calculate"
                 android:gravity="center"
-                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 android:background="@drawable/background_btn"/>
 
@@ -251,7 +251,7 @@
                 android:textColor="@color/gold"
                 android:gravity="center"
                 android:text="@string/history_request"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 />
         </LinearLayout>
 
