@@ -9,14 +9,14 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="750dp"
         android:layout_marginStart="100dp"
+        android:src="@drawable/coins"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/coins"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,9 +30,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="34sp"
+            android:gravity="center"
             android:text="@string/input_data"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
         <LinearLayout
@@ -114,8 +115,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/typeOfCapitalization"
+                android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="26sp"
                 android:layout_marginStart="16dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -133,10 +135,12 @@
                         android:id="@+id/radioButtonWeek"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:buttonTint="@color/gold"
                         android:layout_marginStart="16dp"
                         android:text="@string/week"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
                         android:textColor="@color/black"/>
 
                     <androidx.appcompat.widget.AppCompatRadioButton
@@ -146,6 +150,8 @@
                         android:buttonTint="@color/gold"
                         android:layout_marginStart="50dp"
                         android:text="@string/month"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
                         android:textColor="@color/black"/>
                 </RadioGroup>
 
@@ -227,17 +233,18 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:textSize="26sp"
+                android:textSize="30sp"
                 android:textColor="@color/gold"
                 tools:text="123.00 Месяца"/>
 
             <TextView
                 android:id="@+id/btnCalculation"
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:padding="8dp"
                 android:text="@string/calculate"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:textSize="18sp"
                 android:textColor="@color/black"
@@ -251,7 +258,7 @@
                 android:textColor="@color/gold"
                 android:gravity="center"
                 android:text="@string/history_request"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 />
         </LinearLayout>
 

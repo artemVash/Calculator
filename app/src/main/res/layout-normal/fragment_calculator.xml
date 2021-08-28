@@ -32,7 +32,8 @@
             android:textColor="@color/black"
             android:textSize="30sp"
             android:text="@string/input_data"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Ввод данных"/>
 
 
         <LinearLayout
