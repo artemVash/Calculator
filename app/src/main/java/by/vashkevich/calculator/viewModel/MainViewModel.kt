@@ -1,4 +1,4 @@
-package by.vashkevich.calculator
+package by.vashkevich.calculator.viewModel
 
 import android.app.Application
 import android.util.Log
@@ -7,6 +7,7 @@ import android.widget.RadioButton
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import by.vashkevich.calculator.R
 import by.vashkevich.calculator.dataBase.MyDataBase
 import by.vashkevich.calculator.dataBase.entity.DataRequest
 import by.vashkevich.calculator.helpers.InputDataState
