@@ -21,6 +21,7 @@
     <string name="pressed_exit">Click again to exit</string>
     <string name="toast_fill_all_fields">Fill in all the fields</string>
     <string name="toast_choose_type">Choose capitalization type</string>
+    <string name="toast_input_sum_month_replenishment">Enter the monthly top-up amount</string>
 
     <string name="clear_all_data_in_recycler">Clear search history?</string>
     <string name="delete_data_in_recycler">Delete this query?</string>

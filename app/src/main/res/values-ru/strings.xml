@@ -21,6 +21,7 @@
     <string name="pressed_exit">Нажмите еще раз, чтобы выйти</string>
     <string name="toast_fill_all_fields">Заполните все поля</string>
     <string name="toast_choose_type">Выберите тип капитализации</string>
+    <string name="toast_input_sum_month_replenishment">Введите сумму ежемесячного пополнения</string>
 
     <string name="clear_all_data_in_recycler">Очистить историю запросов?</string>
     <string name="delete_data_in_recycler">Удалить данный запрос?</string>
