@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import by.vashkevich.calculator.MainViewModel
+import by.vashkevich.calculator.viewModel.MainViewModel
 import by.vashkevich.calculator.R
 import by.vashkevich.calculator.helpers.InputDataState
 import com.google.android.material.textfield.TextInputEditText
@@ -97,7 +97,7 @@ class CalculatorFragment : Fragment() {
                 firstRadioButton = radioButtonMonth,
                 secondRadioButton = radioButtonWeek,
                 checkBoxButton = replenishmentCheckBox,
-                monthReplenishment = vvv()
+                monthReplenishment = checkedReplenishmentCheckBox()
             )
         }
 
@@ -124,7 +124,7 @@ class CalculatorFragment : Fragment() {
         })
     }
 
-    private fun vvv():String{
+    private fun checkedReplenishmentCheckBox():String{
         return if (replenishmentCheckBox.isChecked) sumMonth.text.toString()
         else "0.0"
     }

@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import by.vashkevich.calculator.dataBase.entity.DataRequest
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import by.vashkevich.calculator.alertDialog.DeleteItemAlertDialog
 
 class AdapterDataRequest(
     val list: List<DataRequest>,
-    val viewModel: MainViewModel,
     context: Context
 ) : RecyclerView.Adapter<AdapterDataRequest.CardViewHolder>() {
 
@@ -32,19 +31,9 @@ class AdapterDataRequest(
                 data.replenishmentInAMonth
             itemView.findViewById<TextView>(R.id.item_result).text = data.result
             itemView.setOnClickListener {
-                MaterialAlertDialogBuilder(
-                    contextR,
-                    R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background
-                )
-                    .setTitle(R.string.delete_data_in_recycler)
-                    .setNegativeButton(R.string.back) { dialog, which ->
-                        dialog.dismiss()
-                    }
-                    .setPositiveButton(R.string.delete) { dialog, which ->
-                        viewModel.delete(data)
-                        viewModel.getAll()
-                    }
-                    .show()
+
+                val deleteItemAlertDialog = DeleteItemAlertDialog(contextR,data)
+                deleteItemAlertDialog.show()
 
                 notifyDataSetChanged();
             }

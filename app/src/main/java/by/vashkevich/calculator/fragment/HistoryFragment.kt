@@ -10,15 +10,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import by.vashkevich.calculator.AdapterDataRequest
-import by.vashkevich.calculator.MainViewModel
+import by.vashkevich.calculator.viewModel.MainViewModel
 import by.vashkevich.calculator.R
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import by.vashkevich.calculator.alertDialog.ClearAllAlertDialog
 
 class HistoryFragment : Fragment() {
 
     private val viewModel by lazy {
         ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
     }
+
+    private val clearAllAlertDialog = ClearAllAlertDialog(requireContext())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +43,7 @@ class HistoryFragment : Fragment() {
         viewModel.getAll()
 
         viewModel.allDataRequest.observe(requireActivity()) {
-            val adapter = AdapterDataRequest(it, viewModel, view.context)
+            val adapter = AdapterDataRequest(it, view.context)
             recDataRequest.adapter = adapter
             adapter.notifyDataSetChanged()
         }
@@ -52,20 +54,7 @@ class HistoryFragment : Fragment() {
         }
 
         clear.setOnClickListener {
-
-            MaterialAlertDialogBuilder(
-                view.context,
-                R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background
-            )
-                .setTitle(R.string.clear_all_data_in_recycler)
-                .setNegativeButton(getString(R.string.back)) { dialog, which ->
-                    dialog.dismiss()
-                }
-                .setPositiveButton(getString(R.string.clear)) { dialog, which ->
-                    viewModel.clearAll()
-                    viewModel.getAll()
-                }
-                .show()
+            clearAllAlertDialog.show()
         }
 
     }
